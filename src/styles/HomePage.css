@@ -1,3 +1,9 @@
+:root {
+  --primary-color: #292b2f;
+  --buttom-color-hover: #8ea1e1;
+  --text-color: white;
+}
+
 .homePageContainer {
   height: 100%;
   display: flex;
@@ -10,7 +16,7 @@
 }
 
 .MuiAppBar-colorPrimary {
-  background-color: #292b2f !important;
+  background-color: var(--primary-color) !important;
 }
 
 .homePageContent .MuiButtonBase-root {
@@ -19,8 +25,8 @@
 }
 
 .homePageContent .MuiButtonBase-root:hover {
-  background-color: #8ea1e1 !important;
-  color: white;
+  background-color: var(--buttom-color-hover) !important;
+  color: var(--text-color);
 }
 
 @media(max-width: 991px) {

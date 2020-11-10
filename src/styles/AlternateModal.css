@@ -1,3 +1,9 @@
+:root {
+  --primary-color: #252527;
+  --text-color: white;
+  --secondary-color: #565657;
+}
+
 .leftContent,
 .rightContent {
   display: flex;
@@ -8,7 +14,7 @@
   clear: both;
   padding-bottom: 150px;
   padding-top: 150px;
-  border-bottom: 1px solid #565657;
+  border-bottom: 1px solid var(--secondary-color);
 }
 
 .leftContentText {
@@ -35,7 +41,7 @@
 
 .rightContentImage img,
 .leftContentImage img {
-  box-shadow: 0 0 1em #252527;
+  box-shadow: 0 0 1em var(--primary-color);
   width: 100%;
   max-width: 700px;
   border-radius: 8px;

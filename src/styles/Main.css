@@ -1,10 +1,14 @@
+:root {
+  --primary-color: #36393f;
+}
+
 * {
   padding: 0;
   margin: 0;
 }
 
 body {
-  background-color: #36393f;
+  background-color: var(--primary-color);
   height: 100%;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

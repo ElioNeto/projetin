@@ -1,4 +1,9 @@
+:root {
+  --tertiary-color: #303136;
+  --text-color: white;
+}
+
 .MuiPaper-root {
-  background-color: #303136 !important;
-  color: white !important;
+  background-color: var(--tertiary-color) !important;
+  color: var(--text-color) !important;
 }
