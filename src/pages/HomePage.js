@@ -96,16 +96,80 @@ const HomePage = (props) => {
         [classes.fullList]: anchor === 'top' || anchor === 'bottom',
       })}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
+      /* onClick={toggleDrawer(anchor, false)} */
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
+
+      {/* <List>
         {['Adicionar', 'Suporte', 'Recursos', 'Comandos', 'Dashboard'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon><GolfCourseIcon style={{color: 'white'}} /></ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
+      </List> */}
+
+      <List>
+        <ListItem button>
+          <ListItemIcon>
+            <GolfCourseIcon style={{color: 'white'}} />
+          </ListItemIcon>
+          <ListItemText 
+            primary='Adicionar' 
+            onClick={(e) => {
+              e.preventDefault();
+              alert('Adicionar')
+            }}
+          />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <GolfCourseIcon style={{color: 'white'}} />
+          </ListItemIcon>
+          <ListItemText 
+            primary='Suporte' 
+            onClick={(e) => {
+              e.preventDefault();
+              alert('Suporte')
+            }}
+          />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <GolfCourseIcon style={{color: 'white'}} />
+          </ListItemIcon>
+          <ListItemText 
+            primary='Recursos' 
+            onClick={(e) => {
+              e.preventDefault();
+              alert('Recursos')
+            }}
+          />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <GolfCourseIcon style={{color: 'white'}} />
+          </ListItemIcon>
+          <ListItemText 
+            primary='Comandos' 
+            onClick={(e) => {
+              e.preventDefault();
+              alert('Comandos')
+            }}
+          />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <GolfCourseIcon style={{color: 'white'}} />
+          </ListItemIcon>
+          <ListItemText 
+            primary='Dashboard' 
+            onClick={(e) => {
+              e.preventDefault();
+              alert('Dashboard')
+            }}
+          />
+        </ListItem>
       </List>
     </div>
   );
