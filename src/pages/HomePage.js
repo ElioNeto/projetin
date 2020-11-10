@@ -23,10 +23,10 @@ import { FaDiscord, FaFlag } from 'react-icons/fa';
 import StreamingImage from '../Assets/Streaming.PNG'
 import PlaylistImage from '../Assets/Playlist.PNG'
 
-import './HomePage.css'
-import '../components/Main.css'
-import '../components/AlternateModal.css'
-import '../components/Drawer.css'
+import '../styles/Main.css'
+import '../styles/Drawer.css'
+import '../styles/HomePage.css'
+import '../styles/AlternateModal.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -158,17 +158,17 @@ const HomePage = (props) => {
             }}
           />
         </ListItem>
-        <ListItem button>
+        <ListItem 
+          button
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = '/authorization'
+          }}
+        >
           <ListItemIcon>
             <GolfCourseIcon style={{color: 'white'}} />
           </ListItemIcon>
-          <ListItemText 
-            primary='Dashboard' 
-            onClick={(e) => {
-              e.preventDefault();
-              alert('Dashboard')
-            }}
-          />
+          <ListItemText primary='Dashboard' />
         </ListItem>
       </List>
     </div>

@@ -18,8 +18,8 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
 
-import './HomePage.css'
-import '../components/Main.css'
+import '../styles/Main.css'
+import '../styles/HomePage.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {
