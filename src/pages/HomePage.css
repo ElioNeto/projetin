@@ -1,0 +1,33 @@
+.homePageContainer {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.homePageContent {
+  text-align: center;
+}
+
+.MuiAppBar-colorPrimary {
+  background-color: #292b2f !important;
+}
+
+.homePageContent .MuiButtonBase-root {
+  font-size: 1.2em !important;
+  padding: 12px 15px;
+}
+
+.homePageContent .MuiButtonBase-root:hover {
+  background-color: #8ea1e1 !important;
+  color: white;
+}
+
+@media(max-width: 991px) {
+
+  .homePageContent .MuiButtonBase-root {
+    width: 85%;
+    font-size: 1.2em !important;
+  }
+
+}
