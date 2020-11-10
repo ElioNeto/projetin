@@ -12,7 +12,7 @@ import HomePage from './HomePage';
 import AuthorizationPage from './Authorization';
 import CommandsPage from './CommandsPage';
 
-import CallBack from '../components/FetchUserInfo';
+/* import CallBack from '../components/FetchUserInfo'; */
 
 const Root = () => {
   let isLogged = false
@@ -29,12 +29,12 @@ const Root = () => {
 
   const [cookies, setCookie] = useCookies(['userToken', 'userRefreshToken']);
 
-  function StartCallBack() {
+  /* function StartCallBack() {
     CallBack(cookies, setCookie, useQuery())
     return(
       <Redirect to="/" />
     )
-  }
+  } */
 
   return(
     <Router>
@@ -46,7 +46,7 @@ const Root = () => {
           {isLogged ? <Redirect to='/dashboard' /> : RedirectAuth}
         </Route>
         <Route exact path="/callback">
-          <StartCallBack />
+          {/* <StartCallBack /> */}
         </Route>
       </Switch>
     </Router>

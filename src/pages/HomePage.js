@@ -1,5 +1,5 @@
 import React from 'react';
-import clsx from 'clsx';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -12,13 +12,10 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import PropTypes from 'prop-types';
 import Fab from '@material-ui/core/Fab';
 import Zoom from '@material-ui/core/Zoom';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import List from '@material-ui/core/List';
-import GolfCourseIcon from '@material-ui/icons/GolfCourse';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import { makeStyles } from '@material-ui/core/styles';
 import { FaDiscord, FaFlag } from 'react-icons/fa';
+
+import { ListItems } from '../components/ListItems'
 
 import StreamingImage from '../Assets/Streaming.PNG'
 import PlaylistImage from '../Assets/Playlist.PNG'
@@ -90,89 +87,7 @@ const HomePage = (props) => {
     setState({ ...state, [anchor]: open });
   };
 
-  const list = (anchor) => (
-    <div
-      className={clsx(classes.list, {
-        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
-      })}
-      role="presentation"
-      /* onClick={toggleDrawer(anchor, false)} */
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-
-      {/* <List>
-        {['Adicionar', 'Suporte', 'Recursos', 'Comandos', 'Dashboard'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon><GolfCourseIcon style={{color: 'white'}} /></ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List> */}
-
-      <List>
-        <ListItem button>
-          <ListItemIcon>
-            <GolfCourseIcon style={{color: 'white'}} />
-          </ListItemIcon>
-          <ListItemText 
-            primary='Adicionar' 
-            onClick={(e) => {
-              e.preventDefault();
-              alert('Adicionar')
-            }}
-          />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <GolfCourseIcon style={{color: 'white'}} />
-          </ListItemIcon>
-          <ListItemText 
-            primary='Suporte' 
-            onClick={(e) => {
-              e.preventDefault();
-              alert('Suporte')
-            }}
-          />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <GolfCourseIcon style={{color: 'white'}} />
-          </ListItemIcon>
-          <ListItemText 
-            primary='Recursos' 
-            onClick={(e) => {
-              e.preventDefault();
-              alert('Recursos')
-            }}
-          />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <GolfCourseIcon style={{color: 'white'}} />
-          </ListItemIcon>
-          <ListItemText 
-            primary='Comandos' 
-            onClick={(e) => {
-              e.preventDefault();
-              alert('Comandos')
-            }}
-          />
-        </ListItem>
-        <ListItem 
-          button
-          onClick={(e) => {
-            e.preventDefault();
-            window.location.href = '/authorization'
-          }}
-        >
-          <ListItemIcon>
-            <GolfCourseIcon style={{color: 'white'}} />
-          </ListItemIcon>
-          <ListItemText primary='Dashboard' />
-        </ListItem>
-      </List>
-    </div>
-  );
+  
 
   function ScrollTop(props) {
     const { children, window } = props;
@@ -219,7 +134,8 @@ const HomePage = (props) => {
                   onClose={toggleDrawer(anchor, false)}
                   onOpen={toggleDrawer(anchor, true)}
                 >
-                  {list(anchor)}
+                  {/* {list(anchor)} */}
+                  <ListItems anchor={anchor} toggleDrawer={toggleDrawer}/>
                 </SwipeableDrawer>
               </React.Fragment>
             ))}
