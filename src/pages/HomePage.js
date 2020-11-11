@@ -15,7 +15,7 @@ import Zoom from '@material-ui/core/Zoom';
 import { makeStyles } from '@material-ui/core/styles';
 import { FaDiscord, FaFlag } from 'react-icons/fa';
 
-import { ListItems } from '../components/ListItems'
+import Navbar from '../components/Navbar'
 
 import StreamingImage from '../Assets/Streaming.PNG'
 import PlaylistImage from '../Assets/Playlist.PNG'
@@ -26,9 +26,6 @@ import '../styles/HomePage.css'
 import '../styles/AlternateModal.css'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
   homeButtom: {
     position: 'fixed',
     bottom: theme.spacing(2),
@@ -60,35 +57,13 @@ const useStyles = makeStyles((theme) => ({
   cardSubTitle: {
     color: '#DCDDDE',
     marginBottom: '30px'
-  },
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: 'auto',
-  },
+  }
 }));
 
 
 const HomePage = (props) => {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
-
-  const toggleDrawer = (anchor, open) => (event) => {
-    if(event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
-    }
-
-    setState({ ...state, [anchor]: open });
-  };
-
   
-
   function ScrollTop(props) {
     const { children, window } = props;
     const trigger = useScrollTrigger({
@@ -121,32 +96,8 @@ const HomePage = (props) => {
 
   return(
     <div className="container">
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            {['left'].map((anchor) => (
-              <React.Fragment key={anchor}>
-                <MenuIcon onClick={toggleDrawer(anchor, true)}><MenuIcon /></MenuIcon>
-                <SwipeableDrawer
-                  anchor={anchor}
-                  open={state[anchor]}
-                  onClose={toggleDrawer(anchor, false)}
-                  onOpen={toggleDrawer(anchor, true)}
-                >
-                  {/* {list(anchor)} */}
-                  <ListItems anchor={anchor} toggleDrawer={toggleDrawer}/>
-                </SwipeableDrawer>
-              </React.Fragment>
-            ))}
-          </IconButton>
-            <Typography variant="h6" className={classes.title}>
-             Grove
-            </Typography>
-           <Button href="/authorization" color="inherit">Dashboard</Button>
-          </Toolbar>
-        </AppBar>
-      </div>
+      
+      {/* <Navbar/> */}
 
       <div className="homePageContainer">
         <div className="homePageContent">

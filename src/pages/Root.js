@@ -12,6 +12,8 @@ import HomePage from './HomePage';
 import AuthorizationPage from './Authorization';
 import CommandsPage from './CommandsPage';
 
+import Navbar from '../components/Navbar'
+
 /* import CallBack from '../components/FetchUserInfo'; */
 
 const Root = () => {
@@ -37,6 +39,8 @@ const Root = () => {
   } */
 
   return(
+    <>
+    <Navbar/>
     <Router>
       <Switch>
         <Route exact path="/" component={HomePage} />
@@ -50,6 +54,7 @@ const Root = () => {
         </Route>
       </Switch>
     </Router>
+    </>
   )
 }
 

@@ -18,9 +18,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function ListItems({anchor, toggleDrawer}) {
+function ListItems({anchor, toggleDrawer}) {
   const classes = useStyles();
   const isLogged = false
+
   return (
     <div
       className={clsx(classes.list, {
@@ -97,11 +98,4 @@ export function ListItems({anchor, toggleDrawer}) {
   )
 }
 
-/* export default ListItem */
-
-
-/* 
-const list = (anchor) => (
-    
-  );
-*/
+export default ListItems 
