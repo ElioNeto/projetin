@@ -1,29 +1,12 @@
 import React from 'react';
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import PropTypes from 'prop-types';
-import Fab from '@material-ui/core/Fab';
-import Zoom from '@material-ui/core/Zoom';
 import { makeStyles } from '@material-ui/core/styles';
 import { FaDiscord, FaFlag } from 'react-icons/fa';
 
-import Navbar from '../components/Navbar'
-
 import StreamingImage from '../Assets/Streaming.PNG'
 import PlaylistImage from '../Assets/Playlist.PNG'
-
-import '../styles/Main.css'
-import '../styles/Drawer.css'
-import '../styles/HomePage.css'
-import '../styles/AlternateModal.css'
 
 const useStyles = makeStyles((theme) => ({
   homeButtom: {
@@ -61,44 +44,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const HomePage = (props) => {
+const HomePage = () => {
   const classes = useStyles();
-  
-  function ScrollTop(props) {
-    const { children, window } = props;
-    const trigger = useScrollTrigger({
-      target: window ? window() : undefined,
-      disableHysteresis: true,
-      threshold: 100,
-    });
-  
-    const handleClick = (event) => {
-      const anchor = (event.target.ownerDocument || document).querySelector('#root');
-  
-      if(anchor) {
-        anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    };
-
-    return(
-      <Zoom in={trigger}>
-        <div onClick={handleClick} role="presentation" className={classes.homeButtom}>
-          {children}
-        </div>
-      </Zoom>
-    );
-  }
-
-  ScrollTop.propTypes = {
-    children: PropTypes.element.isRequired,
-    window: PropTypes.func,
-  };
 
   return(
     <div className="container">
-      
-      {/* <Navbar/> */}
-
       <div className="homePageContainer">
         <div className="homePageContent">
           <Typography className={classes.title} variant="h2">
@@ -211,11 +161,6 @@ const HomePage = (props) => {
           />
         </div>
       </div>
-      <ScrollTop {...props}>
-        <Fab color="primary" size="medium" aria-label="scroll back to top">
-          <KeyboardArrowUpIcon />
-        </Fab>
-      </ScrollTop>
     </div>
   )
 }
