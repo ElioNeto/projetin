@@ -12,7 +12,14 @@ import HomePage from './HomePage';
 import AuthorizationPage from './Authorization';
 import CommandsPage from './CommandsPage';
 
-import CallBack from '../components/FetchUserInfo';
+import Navbar from '../components/Navbar'
+import ScrollTop from '../components/ScrollTop'
+
+import '../styles/Main.css'
+import '../styles/Drawer.css'
+import '../styles/HomePage.css'
+import '../styles/AlternateModal.css'
+
 
 const Root = () => {
   let isLogged = false
@@ -29,14 +36,10 @@ const Root = () => {
 
   const [cookies, setCookie] = useCookies(['userToken', 'userRefreshToken']);
 
-  function StartCallBack() {
-    CallBack(cookies, setCookie, useQuery())
-    return(
-      <Redirect to="/" />
-    )
-  }
-
   return(
+    <>
+    <Navbar />
+    <ScrollTop />
     <Router>
       <Switch>
         <Route exact path="/" component={HomePage} />
@@ -46,10 +49,11 @@ const Root = () => {
           {isLogged ? <Redirect to='/dashboard' /> : RedirectAuth}
         </Route>
         <Route exact path="/callback">
-          <StartCallBack />
+          {/* <StartCallBack /> */}
         </Route>
       </Switch>
     </Router>
+    </>
   )
 }
 

@@ -1,21 +1,11 @@
 import React from 'react'
-import clsx from 'clsx';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
+
 import Typography from '@material-ui/core/Typography';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import MenuIcon from '@material-ui/icons/Menu';
-import GolfCourseIcon from '@material-ui/icons/GolfCourse';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import List from '@material-ui/core/List';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 import { makeStyles } from '@material-ui/core/styles';
 
 import '../styles/Main.css'
@@ -68,74 +58,14 @@ const useStyles = makeStyles((theme) => ({
 const CommandsPage = () => {
   const classes = useStyles() 
 
-  const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
-
   const [expanded, setExpanded] = React.useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
-    }
-
-    setState({ ...state, [anchor]: open });
-  };
-
-  const list = (anchor) => (
-    <div
-      className={clsx(classes.list, {
-        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
-      })}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        {['Adicionar', 'Suporte', 'Recursos', 'Comandos', 'Dashboard'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon><GolfCourseIcon style={{color: 'white'}} /></ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
-
   return(
     <div className="container">
-       <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            {['left'].map((anchor) => (
-              <React.Fragment key={anchor}>
-                <MenuIcon onClick={toggleDrawer(anchor, true)}><MenuIcon /></MenuIcon>
-                <SwipeableDrawer
-                  anchor={anchor}
-                  open={state[anchor]}
-                  onClose={toggleDrawer(anchor, false)}
-                  onOpen={toggleDrawer(anchor, true)}
-                >
-                  {list(anchor)}
-                </SwipeableDrawer>
-              </React.Fragment>
-            ))}
-          </IconButton>
-            <Typography variant="h6" className={classes.title}>
-             Grove
-            </Typography>
-           <Button href="/authorization" color="inherit">Dashboard</Button>
-          </Toolbar>
-        </AppBar>
-      </div>
       <div className={classes.root}>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary
