@@ -18,7 +18,7 @@ import '../styles/Drawer.css'
 import '../styles/HomePage.css'
 import '../styles/AlternateModal.css'
 
-import GetUser from '../functions/GetUser'
+import {GetUser} from '../functions/GetUser'
 
 const Root = () => {
   let isLogged = false
