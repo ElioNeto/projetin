@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
           aria-label="menu" 
           onClick={toggleDrawer('left', true)}
         >
-          <MenuIcon ><MenuIcon /></MenuIcon>
+          <MenuIcon />
           <SwipeableDrawer
             anchor={'left'}
             open={state}

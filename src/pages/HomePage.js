@@ -5,8 +5,8 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { FaDiscord, FaFlag } from 'react-icons/fa';
 
-import StreamingImage from '../Assets/Streaming.PNG'
-import PlaylistImage from '../Assets/Playlist.PNG'
+import StreamingImage from '../assets/Streaming.PNG'
+import PlaylistImage from '../assets/Playlist.PNG'
 
 const useStyles = makeStyles((theme) => ({
   homeButtom: {
@@ -42,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '30px'
   }
 }));
-
 
 const HomePage = () => {
   const classes = useStyles();

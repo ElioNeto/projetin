@@ -1,63 +1,57 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
-
-import Zoom from '@material-ui/core/Zoom';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import Fab from '@material-ui/core/Fab';
-
 import { makeStyles } from '@material-ui/core/styles';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+import Fab from '@material-ui/core/Fab';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import Zoom from '@material-ui/core/Zoom';
 
 const useStyles = makeStyles((theme) => ({
-  homeButtom: {
+  root: {
     position: 'fixed',
     bottom: theme.spacing(2),
     right: theme.spacing(2),
   },
-}))
+}));
 
 function ScrollTop(props) {
-  const classes = useStyles()
+  const classes = useStyles();
 
-  function Scrolltop(props) {
-    const { children, window } = props;
-    const trigger = useScrollTrigger({
-      target: window ? window() : undefined,
-      disableHysteresis: true,
-      threshold: 100,
-    });
-  
-    const handleClick = (event) => {
-      const anchor = (event.target.ownerDocument || document).querySelector('#root');
-  
-      if(anchor) {
-        anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    };
+  const { children, window } = props;
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+    disableHysteresis: true,
+    threshold: 100,
+  });
 
-    return(
-      <Zoom in={trigger}>
-        <div onClick={handleClick} role="presentation" className={classes.homeButtom}>
-          {children}
-        </div>
-      </Zoom>
-    );
-  }
+  const handleClick = (event) => {
+    const anchor = (event.target.ownerDocument || document).querySelector('#root');
 
-  Scrolltop.propTypes = {
-    children: PropTypes.element.isRequired,
-    window: PropTypes.func,
+    if(anchor) {
+      anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   };
 
-  return(
-    <>
-      <ScrollTop {...props}>
-        <Fab color="primary" size="medium" aria-label="scroll back to top">
-          <KeyboardArrowUpIcon />
-        </Fab>
-      </ScrollTop>
-    </>
-  )
+  return (
+    <Zoom in={trigger}>
+      <div onClick={handleClick} role="presentation" className={classes.root}>
+        {children}
+      </div>
+    </Zoom>
+  );
 }
 
-export default ScrollTop;
+ScrollTop.propTypes = {
+  children: PropTypes.element.isRequired,
+  window: PropTypes.func,
+};
+
+export default function BackToTop(props) {
+  return (
+    <ScrollTop {...props}>
+      <Fab color="primary" size="medium" aria-label="scroll back to top">
+        <KeyboardArrowUpIcon />
+      </Fab>
+    </ScrollTop>
+  );
+}

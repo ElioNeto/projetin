@@ -1,11 +1,9 @@
 import React from 'react'
-import { useCookies } from 'react-cookie';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
-  useLocation
+  Redirect
 } from "react-router-dom";
 
 import HomePage from './HomePage';
@@ -20,6 +18,7 @@ import '../styles/Drawer.css'
 import '../styles/HomePage.css'
 import '../styles/AlternateModal.css'
 
+import GetUser from '../functions/GetUser'
 
 const Root = () => {
   let isLogged = false
@@ -30,29 +29,21 @@ const Root = () => {
     return
   }
 
-  function useQuery() {
-    return new URLSearchParams(useLocation().search);
-  }
-
-  const [cookies, setCookie] = useCookies(['userToken', 'userRefreshToken']);
-
   return(
     <>
     <Navbar />
     <ScrollTop />
-    <Router>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/commands" component={CommandsPage} />
-        <Route exact path="/authorization" component={AuthorizationPage} />
-        <Route exact path="/login">
-          {isLogged ? <Redirect to='/dashboard' /> : RedirectAuth}
-        </Route>
-        <Route exact path="/callback">
-          {/* <StartCallBack /> */}
-        </Route>
-      </Switch>
-    </Router>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/commands" component={CommandsPage} />
+          <Route exact path="/authorization" component={AuthorizationPage} />
+          <Route exact path="/callback" component={GetUser} />
+          <Route exact path="/login">
+            {isLogged ? <Redirect to='/dashboard' /> : RedirectAuth}
+          </Route>
+        </Switch>
+      </Router>
     </>
   )
 }

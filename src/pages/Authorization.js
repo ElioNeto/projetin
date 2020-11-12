@@ -1,11 +1,8 @@
 import React from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-
-import '../styles/HomePage.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,17 +35,6 @@ const AuthorizationPage = () => {
 
   return(
     <div className="container">
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h6" className={classes.title}>
-              Grove
-            </Typography>
-           <Button href="/login" color="inherit">Dashboard</Button>
-          </Toolbar>
-        </AppBar>
-      </div>
-
       <div className="homePageContainer">
         <div className="homePageContent">
           <Typography className={classes.title} variant="h2">
